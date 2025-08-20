@@ -1,7 +1,7 @@
-import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
 from dotenv import load_dotenv
+
 
 PREDICTIONS = {
         'овен': 'Сегодня день для решительных действий! Вас ждёт успех.',
@@ -17,6 +17,8 @@ PREDICTIONS = {
         'водолей': 'Вы найдете решение проблемы, которая давно вас беспокоит.',
         'рыбы': 'Сегодня вас ждет приятный сюрприз от близкого человека.'
     }
+
+
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text='Привет! Я могу предсказать твою судьбу по знаку зодиака. Напиши свой знак!')
 
@@ -33,8 +35,6 @@ def zodiac_prediction(update, context):
     except KeyError:
         context.bot.send_message(chat_id=update.effective_chat.id, text='Я не понимаю этот знак. Пожалуйста, введи правильный знак зодиака.')
     
-
-
 
 def main():
     load_dotenv()
